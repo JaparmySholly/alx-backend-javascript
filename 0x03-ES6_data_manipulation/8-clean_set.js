@@ -1,11 +1,11 @@
-const hasValuesFromArray = (set, array) => {
-  for (const item of array) {
-    if (!set.has(item)) {
-      return false;
-    }
+const cleanSet = (set, startString) => {
+  if (startString === undefined || startString.length === 0) {
+    return '';
   }
-
-  return true;
+  return [...set]
+    .filter((parametro) => (parametro !== undefined ? parametro.startsWith(startString) : ''))
+    .map((parametro) => (parametro !== undefined ? parametro.slice(startString.length) : ''))
+    .join('-');
 };
 
-export default hasValuesFromArray;
+export default cleanSet;
